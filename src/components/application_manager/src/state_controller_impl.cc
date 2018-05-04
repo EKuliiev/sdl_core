@@ -750,8 +750,8 @@ void StateControllerImpl::OnApplicationRegistered(
   DCHECK_OR_RETURN_VOID(app);
 
   active_states_lock_.Acquire();
-  for (auto it = active_states_.begin(); it != active_states_.end(); ++it) {
-    HmiStatePtr new_state = CreateHmiState(app, *it);
+  for (const auto state_id : active_states_) {
+    HmiStatePtr new_state = CreateHmiState(app, state_id);
     DCHECK_OR_RETURN_VOID(new_state);
     DCHECK_OR_RETURN_VOID(HmiState::STATE_ID_REGULAR != new_state->state_id());
     HmiStatePtr old_hmi_state = app->CurrentHmiState();
