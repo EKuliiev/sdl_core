@@ -1278,7 +1278,7 @@ void PolicyHandler::OnActivateApp(uint32_t connection_key,
   if (!app.valid()) {
     LOG4CXX_WARN(logger_,
                  "App activating failed: no app with connection key "
-                     << connection_key << " have been found.");
+                     << connection_key << " found.");
     return;
   }
   std::string policy_app_id = app->policy_app_id();
