@@ -244,8 +244,8 @@ bool IsStreamableHMIType(mobile_apis::HMILevel::eType val) {
 }
 
 bool IsOnlyMediaAppType(const Application& app) {
-    return app.is_media_application() && !app.is_navi() &&
-           !app.is_voice_communication_supported();
+  return app.is_media_application() && !app.is_navi() &&
+         !app.is_voice_communication_supported();
 }
 
 bool IsSameAudioAppType(const Application& app1, const Application& app2) {
