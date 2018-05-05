@@ -286,35 +286,6 @@ void StateControllerImpl::HmiLevelConflictResolver::operator()(
   // - all NOT audio/video applications saves their's HMI states
   // - all applications with other app types saves their's HMI states
   // - all applications with same app type becomes BACKGROUND
-  //
-  // If applied HMI state is BACKGROUND:
-  // - all applications will save their's HMI states
-  //
-  // Resolve tables to figure out audio/video streaming state
-  // for FULL/LIMITED HMI level.
-  // For example if applied is 'NAVIGATION' and resolve app is
-  // 'PROJECTION' then to resolve becomes 'NOT_STREAMABLE'.
-  // According to video resolve table the only one app may
-  // be 'STREAMABLE' in the same time.
-  //
-  // Video app resolve table
-  // * S --> STREAMABLE, NS --> NOT_STREAMABLE
-  // | resolve / applied -->
-  // V
-  // _______navi___proj__other__
-  // navi  |__NS__|_NS__|__S____|
-  // proj  |__NS__|_NS__|__S ___|
-  // other |__NS__|_NS__|__NS___|
-  //
-  // Audio app resolve table
-  // * A --> AUDIBLE, NS --> NOT_AUDIBLE
-  // | resolve / applied -->
-  // V
-  // _______navi___vc___media__other__
-  // navi  |_NA__|_A___|__A__|____A___|
-  // vc    |__A__|_NA__|__A__|____A___|
-  // media |__A__|_A___|__NA_|____A___|
-  // other |_NA__|_NA__|__NA_|____NA__|
 
   if (!IsStreamableHMIType(state_->hmi_level())) {
     return;
