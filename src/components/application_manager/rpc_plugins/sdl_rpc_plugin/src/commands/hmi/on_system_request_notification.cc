@@ -37,6 +37,9 @@
 #include "interfaces/MOBILE_API.h"
 #include "utils/macro.h"
 
+#include "json/json.h"
+#include "formatters/CFormatterJsonBase.h"
+
 using policy::PolicyHandlerInterface;
 
 namespace sdl_rpc_plugin {
@@ -116,6 +119,12 @@ void OnSystemRequestNotification::Run() {
                 "Sending request with application id " << app->policy_app_id());
 
   params[strings::connection_key] = app->app_id();
+
+  Json::Value tmp;
+  namespace Formatters = NsSmartDeviceLink::NsJSONHandler::Formatters;
+  Formatters::CFormatterJsonBase::objToJsonValue(*message_, tmp);
+  LOG4CXX_DEBUG(logger_, "---->>>> OnSystemRequest: " << tmp.toStyledString());
+
   SendNotificationToMobile(message_);
 }
 
