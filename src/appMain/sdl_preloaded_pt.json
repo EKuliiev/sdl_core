@@ -2,6 +2,7 @@
     "policy_table": {
         "module_config": {
             "preloaded_pt": true,
+	    "preloaded_date": "2018-06-27",
             "exchange_after_x_ignition_cycles": 100,
             "exchange_after_x_kilometers": 1800,
             "exchange_after_x_days": 30,
@@ -13,10 +14,10 @@
             625],
             "endpoints": {
                 "0x07": {
-                    "default": ["http://x.x.x.x:3000/api/1/policies/proprietary"]
+                    "default": ["https://policies.telematics.ford.com/api/policies"]
                 },
                 "0x04": {
-                    "default": ["http://x.x.x.x:3000/api/1/softwareUpdate"]
+                    "default": ["http://ivsu.software.ford.com/api/getsoftwareupdates"]
                 },
                 "queryAppsUrl": {
                     "default": ["http://sdl.shaid.server"]
