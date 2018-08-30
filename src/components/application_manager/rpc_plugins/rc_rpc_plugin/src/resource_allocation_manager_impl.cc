@@ -183,7 +183,7 @@ void ResourceAllocationManagerImpl::ProcessApplicationPolicyUpdate() {
 template <typename EnumType>
 EnumType StringToEnum(const std::string& str) {
   using smart_objects::EnumConversionHelper;
-  EnumType val;
+  EnumType val = {};
   EnumConversionHelper<EnumType>::StringToEnum(str, &val);
   return val;
 }
